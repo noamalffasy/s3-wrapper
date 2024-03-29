@@ -46,3 +46,49 @@ where
 {
     Func::cust(Substr).args([str.into(), start.into(), length.into()])
 }
+
+#[cfg(test)]
+mod tests {
+    use sea_query::{tests_cfg::*, *};
+
+    use super::substr;
+
+    fn build_query() -> SelectStatement {
+        return Query::select()
+            .expr(substr(
+                Expr::col(Char::Character),
+                Expr::expr(1),
+                Expr::expr(6),
+            ))
+            .from(Char::Table)
+            .to_owned();
+    }
+
+    #[test]
+    fn test_function_calling_in_mysql() {
+        let query = build_query();
+
+        assert_eq!(
+            query.to_string(MysqlQueryBuilder),
+            r#"SELECT SUBSTR(`character`, 1, 6) FROM `character`"#
+        );
+    }
+    #[test]
+    fn test_function_calling_in_postgres() {
+        let query = build_query();
+
+        assert_eq!(
+            query.to_string(PostgresQueryBuilder),
+            r#"SELECT SUBSTR("character", 1, 6) FROM "character""#
+        );
+    }
+    #[test]
+    fn test_function_calling_in_sqlite() {
+        let query = build_query();
+
+        assert_eq!(
+            query.to_string(SqliteQueryBuilder),
+            r#"SELECT SUBSTR("character", 1, 6) FROM "character""#
+        );
+    }
+}
