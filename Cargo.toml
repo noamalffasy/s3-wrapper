@@ -6,7 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [workspace]
-members = [".", "s3", "vfs-storage"]
+members = [".", "s3-api", "s3-derive", "s3-entities", "vfs-storage"]
 
 [dependencies]
-s3 = { path = "s3" }
+s3-api = { path = "s3-api" }
+s3-entities = { path = "s3-entities" }

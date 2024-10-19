@@ -17,7 +17,7 @@ serde = { version = "1", features = ["derive"] }
 dotenvy = "0.15"
 async-trait = "0.1"
 
-s3 = { path = "../s3" }
+s3-entities = { path = "../s3-entities" }
 
 [dependencies.uuid]
 version = "1.4.1"

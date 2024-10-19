@@ -1,0 +1,25 @@
+[package]
+name = "s3-api"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+s3-entities = { path = "../s3-entities" }
+s3-derive = { path = "../s3-derive" }
+
+actix-web = "4"
+actix-xml = "0.2"
+quick-xml = { version = "0.36", features = ["serialize"] }
+serde = { version = "1", features = ["derive"] }
+thiserror = "1.0"
+hmac = "0"
+sha2 = "0"
+chrono = "0.4"
+hex = "0"
+rand = "0"
+env_logger = "0.11"
+
+async-trait = "0.1"
+futures = "0.3"
