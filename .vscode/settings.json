@@ -1,6 +1,0 @@
-{
-    "rust-analyzer.linkedProjects": [
-        "./Cargo.toml",
-        "./vfs-storage/Cargo.toml"
-    ]
-}
